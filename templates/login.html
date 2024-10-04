@@ -1,0 +1,11 @@
+<!-- cant use a jinja like 'extends' and a html template only one or the other -->
+{%extends 'base.html'%}
+
+{%block title%}Login {%endblock%} 
+
+{%set show_nav_bar = True%}
+
+{%block style%} <link rel="stylesheet" href="{{url_for('static', filename='login_style.css')}}"> {%endblock%}
+
+<!-- lets say we dont want anything in this. we can just have it empty. but we have to load them, if we dont load them (like with the nav bar) itll just load anyways since this inherits from the base template-->
+{%block content%} <p>hi</p {%endblock%}

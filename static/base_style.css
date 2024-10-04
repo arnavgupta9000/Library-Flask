@@ -1,0 +1,47 @@
+/* base_style.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height  -> simplifies calculation should basically always use */
+    /* for more clarification it makes the total height and width inlcude all padding instead of applying another layer ontop of it */
+} 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+    display: flex; /* Use flexbox for layout -> all children of things in the header are now flexbox*/
+    justify-content: space-between; /* Space between items -> pushing items to the edge of the header*/
+    align-items: center; /* Center items vertically */
+    background-color: black; /* Background color */
+    color: white; /* Text color */
+    padding: 20px; /* Padding inside the header - remember this is all ways*/ 
+}
+
+nav ul {
+    list-style-type: none; /* No bullets */
+    padding: 0; /* Remove padding */
+    display: flex; /* Use flexbox for horizontal layout */
+    /* flex-direction: column; -> this will make them into columns but by default a flexbox is horizontal*/ 
+}
+
+nav ul li {
+    margin: 0 15px; /* Spacing between items */
+}
+
+nav ul li a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding around links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+nav ul li a:hover {
+    background-color: #003d7a; /* Darker blue on hover */
+}
