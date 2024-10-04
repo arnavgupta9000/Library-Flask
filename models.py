@@ -12,3 +12,4 @@ class Book(db.Model):
     title = db.Column(db.String(100))
     author = db.Column(db.String(100))
     avaliable = db.Column(db.Boolean, default = True)
+    rating = db.Column(db.Integer, default = 5) # 5 = max score
