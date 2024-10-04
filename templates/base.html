@@ -29,6 +29,19 @@
         {%endblock%}
    
     </header>
+
+    {%with messages = get_flashed_messages() %}
+        {% if messages%}
+            <ul>
+            {% for i in messages%} 
+                <li>{{i}}</li>
+
+
+            {%endfor%}
+            </ul>
+        {%endif%}
+    {%endwith%}
+
     {%block content%}
     {%endblock%}
 </body>

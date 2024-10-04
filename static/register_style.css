@@ -16,8 +16,7 @@ label {
     margin-bottom: 5px; /* Spacing below the label */
 }
 
-input[type="email"], /* get all input with type=email and can also use ids*/
-input[type="password"] {
+#email, #name, #password, #confirm_password {
     width: 100%; /* Make the input fields take full width */
     padding: 10px; /* Padding inside the input fields */
     border: 1px solid #ccc; /* Border around input fields */

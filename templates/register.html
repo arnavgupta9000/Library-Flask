@@ -1,0 +1,37 @@
+{%extends'base.html'%}
+
+{%block title%}Register{%endblock%}
+
+{%set show_nav_bar = True%}
+
+{%block style%} <link rel="stylesheet" href="{{url_for('static', filename='register_style.css')}}"> {%endblock%}
+
+{%block content%} 
+<form action="{{ url_for('auth.register') }}", method="POST"> <!--action = where should the form be send upon completion-->
+    <div>
+        <label for="email">Email</label>
+        <input type="email", id="email", name="email" required> <!--type email means the broswer will know what an email look like, required = must be filled out-->
+        <!-- id = used later for javascript, name = acts as a key in the key-value pairs sent to the server when a form is submitted (value = whats in form) basically its what represents the data/// email = request.form['email']-->
+    </div>
+
+    <div>
+        <label for="name">Name</label>
+        <input type="text", id="name", name = "name" required>
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input type="password", id="password", name="password" required>
+    </div>
+
+    <div>
+        <label for="password">Confirm Password</label> <!--remember id's must be unique (per file) so we can acc catch them-->
+        <input type="password", id = "confirm_password", name = "confirm_password" required> <!-- just match name with id-->
+    </div>
+
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+{%endblock%}
+
