@@ -1,3 +1,24 @@
+'''
+difference between 
+
+return redirect(url_for('routes.home'))
+
+return render_template('home.html')
+
+return url_for('routes.home')
+
+the first one is used when making post requests, it reloads the page thus allowing things like usermixin to work properly (client-side action)
+when to use? after form submission, after a specific action(like logging out, deleting, signing in), to change url path
+
+the second one is used when making get requests, cause the page does not need to be reloaded and we can just go the we page (server-side action, no URL change keeps the html)
+When a user visits a page (like /home or /profile) and you want to show the content without triggering a new HTTP request, for static pages, If there's an error in a form submission (like a missing field) you can stay on the same page and show the error message without redirecting.
+
+
+the third one is used when u just want to just want to generate a URL and possibly pass it into a function, log it, or use it in a template, but notice no rendering or redirecting is happening (Generates and returns a URL string without doing anything else)
+It's typically used internally to generate URLs dynamically (so only used when specifying paths basically)
+'''
+
+
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from __init__ import db
 from models import User
@@ -9,9 +30,31 @@ from flask_login import login_user, login_required, logout_user, current_user # 
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login')
+@auth.route('/login', methods = ["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        user = User.query.filter_by(email=email).first()
+        if user: # email exists just check to make sure the password matches
+            if check_password_hash(user.password, password):
+                login_user(user)
+                flash("Log in successful")
+                return redirect(url_for("routes.home"))
+            else:
+                flash("Incorrect password")
+        else:
+            flash("No account found with that email")
+            
+
     return render_template('login.html')
+
+@auth.route('/logout')
+def logout():
+    logout_user()
+    flash("You have been logged out")
+    return redirect(url_for('routes.home'))
 
 @auth.route('/register', methods= ['GET', 'POST'])
 def register():

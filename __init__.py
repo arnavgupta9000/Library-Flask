@@ -8,14 +8,14 @@ db = SQLAlchemy()
 db_name = "database.db"
 
 
-login_manager = LoginManager()  # login handler, and
-login_manager.login_view = 'auth.login' # this tells us where to redirect to
+login_manager = LoginManager()  # login handler that manages users (like logout and managing user sessions)
+login_manager.login_view = 'auth.login' # this tells us where to redirect to (like if a page is required for a user to be logged in and their not it send u to this page)
 
 # User loader function
-@login_manager.user_loader
-def load_user(user_id):
-    from models import User, Book  # Move the import here
-    return User.query.get(int(user_id))
+@login_manager.user_loader # basically when a user is in a session, evertime they make a request they need an id, this gives us that 
+def load_user(user_id): # this allows the "current_user" to work properly
+    from models import User, Book  
+    return User.query.get(int(user_id)) # takes id and then returns the corresponding user
 
 
 def create_app():
@@ -28,7 +28,7 @@ def create_app():
 
 
     db.init_app(app) # make the database
-    login_manager.init_app(app)  # Attach the login manager to the app
+    login_manager.init_app(app)  # attach the login manager to the app
 
     create_database(app)
 

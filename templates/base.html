@@ -10,7 +10,7 @@
     <title>{%block title%} Home Page {%endblock%}</title>
 </head>
 <body>
-    <header>
+    <header class = 'nav-bar'>
         <h1>Library</h1>
         {%block nav_bar%}
         <!--{#% if show_nav_bar %#} this is how u comment out the jinja  code...--> 
@@ -21,13 +21,34 @@
                  <!-- ^^ remember those hashtags are neccessary to comment out jinja code -->
                 <li><a href="{{ url_for('routes.home') }}">Home</a></li>
                 <li><a href="{{ url_for('routes.books') }}">Books</a></li>
-                <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-                <li><a href="{{ url_for('auth.register')}}">Reigster</a></li>
+                {% if current_user.is_authenticated%} 
+                    <!-- <li>Welcome, {#{ current_user.name }#}!</li> -->
+                    <li> <a href="{{url_for('auth.logout')}}">Logout</a></li>
+                {%else%}
+                    <!-- <li>Not currently signed in</li> -->
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('auth.register')}}">Reigster</a></li>
+                {%endif%}
+               
             </ul>
         </nav>
         {%endif%}
+
+        </header>
+
+        <header class="user-status">
+            {% if current_user.is_authenticated %}
+                <p>Welcome, {{ current_user.name }}!</p>
+            {% else %}
+                <p>Not currently signed in</p>
+            {% endif %}
+        </header>
+        
         {%endblock%}
    
+   
+ 
+
     </header>
 
     {%with messages = get_flashed_messages() %}
