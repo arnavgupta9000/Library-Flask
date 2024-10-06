@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+
+{%block title%}Add book{%endblock%}
+
+{%block style%}
+<link rel="stylesheet" href="{{url_for('static', filename='add_book.css')}}">
+{%endblock%}
+
+{%set show_nav_bar = True%}
+
+{%block content%}
+<main>
+    <section class="form-section">
+        <!-- <form action="/add_book" method="POST"> -->
+        <form id = "form1">
+            <label for="title">Book Title</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required>
+
+            <label for="genre">Genre</label>
+            <select id="genre" name="genre">
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="mystery">Mystery</option>
+                <option value="science fiction">Science Fiction</option>
+                <option value="romance">Romance</option>
+            </select>
+
+            <label for="year">Publication Year</label>
+            <input type="number" id="year" name="year" required>
+
+            <label for="description">Description</label>
+            <!-- text-area = mutli line, rows = how many lines to show, placeholder = what shows up before the user types anything -->
+            <textarea id="description" name="description" rows="4" placeholder="Enter a brief description."></textarea>
+
+            <button type="button" id = "next_button1">Next</button>
+        </form>
+    </section>
+
+    <!-- section for after the next button is clicked -->
+
+    <section class="form-section">
+        <form id="form2" style="display: none;"> 
+            <label for="numPages">Book Title</label>
+            <input type="number" id="numPages" name="numPages" required>
+            <button type="button" id = "setPagesButton">Set Pages</button>
+
+            <div id = "pageInputs"></div>
+            <button type="button" id = "nextPageButton" style="display: none;">Next Page</button>
+        </form>
+    </section>
+</main>
+{%endblock%}
+
+<!-- add javascript at the end -->
+{%block javascript%}
+    <script src = "{{url_for('static', filename='add_book.js')}}"></script>
+{%endblock%}

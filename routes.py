@@ -11,3 +11,6 @@ def home():
 def books():
     return render_template('books.html')
 
+@routes.route('/add_books')
+def add_books():
+    return render_template('add_book.html')

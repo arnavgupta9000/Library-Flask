@@ -21,6 +21,12 @@ body {
     background-color: black; /* Background color */
     color: white; /* Text color */
     padding: 20px; /* Padding inside the header - remember this is all ways*/ 
+    top: 0; /* need this line for sticky position to work -> where to get "stuck"*/
+    position: sticky;
+}
+
+.nav-bar.scrolled {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent when scrolled */
 }
 
 .nav-bar nav ul {

@@ -10,7 +10,7 @@
     <title>{%block title%} Home Page {%endblock%}</title>
 </head>
 <body>
-    <header class = 'nav-bar'>
+    <header class = 'nav-bar' id = 'nav-bar'>
         <h1>Library</h1>
         {%block nav_bar%}
         <!--{#% if show_nav_bar %#} this is how u comment out the jinja  code...--> 
@@ -21,6 +21,7 @@
                  <!-- ^^ remember those hashtags are neccessary to comment out jinja code -->
                 <li><a href="{{ url_for('routes.home') }}">Home</a></li>
                 <li><a href="{{ url_for('routes.books') }}">Books</a></li>
+                <li><a href="{{ url_for('routes.add_books') }}">Add book</a></li>
                 {% if current_user.is_authenticated%} 
                     <!-- <li>Welcome, {#{ current_user.name }#}!</li> -->
                     <li> <a href="{{url_for('auth.logout')}}">Logout</a></li>
@@ -64,6 +65,11 @@
     {%endwith%}
 
     {%block content%}
+    {%endblock%}
+
+    <script src = "{{url_for('static', filename='base.js')}}"></script>
+    {%block javascript%}
+    
     {%endblock%}
 </body>
 </html>
