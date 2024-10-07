@@ -1,12 +1,29 @@
+let page_btn = document.getElementById("page-by-page-button");
+let once_btn =  document.getElementById("all-at-once-button");
+let page = document.getElementById("page-by-page");
+let once = document.getElementById("all-at-once");
+
+page_btn.addEventListener("click", () => {
+    page.style.display = 'block';
+    once_btn.style.display = "block"
+    page_btn.style.display = 'none';
+    once.style.display = 'none';
+
+})
+
+
 document.getElementById("next_button1").addEventListener("click", () => {
     document.getElementById('form1').style.display = 'none'; // hide the first form
     document.getElementById('form2').style.display = 'block'; // show the second form
+    document.getElementById("form-display").style.display = 'block';
 })
+
 
 let currentPage = 0;
 let pageInputsContainer = document.getElementById('pageInputs');
 let setPagesButton = document.getElementById('setPagesButton');
 let nextPageButton = document.getElementById('nextPageButton');
+
 
 setPagesButton.addEventListener("click", () => {
     let numPages = parseInt(document.getElementById("numPages").value); // recieves value from the input, and converts it to an int (its orginally a string), careful of bad inputs
@@ -47,4 +64,12 @@ nextPageButton.addEventListener("click", () => {
     } else {
         nextPageButton.style.display = 'none'; // hide the button we're done
     }
+})
+
+once_btn.addEventListener("click", () => {
+    once.style.display = "block";
+    page_btn.style.display = "block"
+    once_btn.style.display = 'none';
+    page.style.display = 'none';
+
 })

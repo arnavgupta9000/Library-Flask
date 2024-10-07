@@ -5,11 +5,34 @@
     font-family: Arial, sans-serif;
 }
 
-main {
+#button-show-container{
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+
+}
+
+#page-by-page-button, #all-at-once-button {
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s
+}
+
+#page-by-page-button:hover, #all-at-once-button:hover {
+    background-color: #92a3a3;
+}
+
+#page-by-page, #all-at-once {
     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     padding-top: 30px;
 }
@@ -23,6 +46,8 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    margin: 0 auto; /* Center the form-section horizontally */
+
 }
 
 /* Form field styles */
@@ -50,7 +75,7 @@ textarea {
     resize: none;
 }
 
-button {
+#page-by-page button, #all-at-once button {
     background-color: #007bff;
     color: white;
     padding: 10px;
@@ -61,7 +86,8 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+#page-by-page button:hover, #all-at-once button:hover {
     background-color: #0056b3;
 }
+
 
