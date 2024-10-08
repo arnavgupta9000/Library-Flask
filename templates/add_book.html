@@ -59,10 +59,17 @@
         </section>
     </div>
 
-    <div id = 'all-at-once' style="display: none;">
-        <section class="form-section">
-            <!-- <form action="/add_book" method="POST"> -->
-            <form id = "form1">
+
+
+
+
+
+
+
+    <div id='all-at-once' style="display: none;">
+    <section class="form-section">
+        <form id="addBookForm" action="/add_books" method="POST"> <!-- Start of the single form -->
+            <div id = 'all-at-once-first-form'>
                 <label for="title">Book Title</label>
                 <input type="text" id="title" name="title" required>
 
@@ -83,30 +90,21 @@
                 <input type="number" id="year" name="year" required>
 
                 <label for="description">Description</label>
-                <!-- text-area = mutli line, rows = how many lines to show, placeholder = what shows up before the user types anything -->
                 <textarea id="description" name="description" rows="4" placeholder="Enter a brief description."></textarea>
 
-                <button type="button" id = "next_button2">Next</button>
-            </form>
-        
+                <button type="button" id="next_button2">Next</button> <!-- This button shows the next section -->
+            </div>
             
-        </section>
-
-       
-    </div>
-
-    <div id = "all-at-once-content" style="display: none;">
-        <section>
-            <form action="add_book.html" method="POST" >
-                <label for="content">Conent</label>
-                <textarea name="cotent" id="conent" rows = "16" placeholder="Enter the book contents here"></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-       
-    </div>
-
-
+            <!-- Content textarea is also included in the same form -->
+            <div id='all-at-once-content' style="display: none;">
+                <label for="content">Content</label>
+                <textarea name="content" id="content" rows="16" placeholder="Enter the book contents here"></textarea>
+            
+            <button type="submit">Submit</button> 
+        </div>
+        </form>
+    </section>
+</div>
 {%endblock%}
 
 <!-- add javascript at the end -->

@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy # for the sql
 from flask_login import LoginManager # for handling the logging in 
 from os import path
+import os
+
 
 
 db = SQLAlchemy()
@@ -29,8 +31,9 @@ def create_app():
 
     db.init_app(app) # make the database
     login_manager.init_app(app)  # attach the login manager to the app
-
+    from models import User, Book
     create_database(app)
+
 
     # register the blueprints (that are made from other files) allows us to be able to use these routes.
     from auth import auth as auth_blueprint
@@ -41,8 +44,12 @@ def create_app():
     return app
 
 def create_database(app):
-    # if not path.exists('database.db'):
+    # if os.path.exists(db_name):
+    #     os.remove(db_name)  # Deletes the existing database file
+    if not path.exists('database.db'):
+
         with app.app_context(): # makes the application context -> flask doesnt doesn't automatically know which application is "active" unless you explicitly push the application context 
             db.create_all() 
-        print('Created databse')
+            
+    print('Created databse')
 

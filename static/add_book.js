@@ -75,6 +75,6 @@ once_btn.addEventListener("click", () => {
 });
 
 document.getElementById("next_button2").addEventListener("click", () => {
-    once.style.display="none";
+    document.getElementById("all-at-once-first-form").style.display="none";
     document.getElementById("all-at-once-content").style.display='block';
 });
