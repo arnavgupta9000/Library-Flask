@@ -90,4 +90,6 @@ textarea {
     background-color: #0056b3;
 }
 
-
+.error {
+    border: 2px solid red; /* Optional: style for invalid fields */
+}

@@ -75,6 +75,41 @@ once_btn.addEventListener("click", () => {
 });
 
 document.getElementById("next_button2").addEventListener("click", () => {
-    document.getElementById("all-at-once-first-form").style.display="none";
-    document.getElementById("all-at-once-content").style.display='block';
+    // check if all fields are filled
+    let required_fields = document.querySelectorAll('#all-at-once-first-form [required]') // query selector get ALL  elements with matching query. returns a NODELIST
+    // '#all-at-once-first-form ->This part of the selector targets the element with the ID all-at-once-first-form
+    //[required]: This part is an attribute selector. It selects any element that has the required attribute. 
+    //Definition: Attributes are additional information provided within an HTML element that describe the element's properties or behavior.
+
+
+    // The space between #all-at-once-first-form and [required] indicates a descendant selector. This means it will select all elements that have the required attribute that are descendants of the element with the ID all-at-once-first-form. ie The selector A B selects all elements of type B that are descendants (children, grandchildren, etc.) of any A element.
+
+    // In the selector #all-at-once-first-form [required], you are combining an ID selector with an attribute selector.
+    // #all-at-once-first-form selects the element with that ID. It could be a <div>, <form>, or any other element.
+    // The space after it indicates that you want to find elements inside (descendants of) this element that match the [required] attribute condition.
+
+
+
+    let all_filled = true;
+    required_fields.forEach(function(field) { // for each is just for each element, function(field) { ... } is an anonymous function (a function without a name) that is called for each element in the required_fields NodeList
+        //Each element from the required_fields NodeList is passed to this function as the field parameter, which represents the current element being processed in the loop.
+
+        // the 2 lines below also work instead of using the function but the function is cleaner and more convenient 
+        // for (let i = 0; i < required_fields.length; i++) {
+        //let field = required_fields[i]; // Accessing the element by index
+
+        if (!field.value) {
+            all_filled = false;
+            field.classList.add('error');
+        } else {
+            field.classList.remove('error');
+        } 
+        
+    });
+
+    if (all_filled) {
+        document.getElementById("all-at-once-first-form").style.display="none";
+        document.getElementById("all-at-once-content").style.display='block';
+    }
+
 });

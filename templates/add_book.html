@@ -66,10 +66,10 @@
 
 
 
-    <div id='all-at-once' style="display: none;">
+<div id='all-at-once' style="display: none;">
     <section class="form-section">
-        <form id="addBookForm" action="/add_books" method="POST"> <!-- Start of the single form -->
-            <div id = 'all-at-once-first-form'>
+        <form id="addBookForm" action="/add_books" method="POST">
+            <div id='all-at-once-first-form'>
                 <label for="title">Book Title</label>
                 <input type="text" id="title" name="title" required>
 
@@ -77,7 +77,8 @@
                 <input type="text" id="author" name="author" required>
 
                 <label for="genre">Genre</label>
-                <select id="genre" name="genre">
+                <select id="genre" name="genre" required>
+                    <option value="" disabled selected>Select a genre</option>
                     <option value="fiction">Fiction</option>
                     <option value="non-fiction">Non-Fiction</option>
                     <option value="fantasy">Fantasy</option>
@@ -92,16 +93,14 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" rows="4" placeholder="Enter a brief description."></textarea>
 
-                <button type="button" id="next_button2">Next</button> <!-- This button shows the next section -->
+                <button type="button" id="next_button2">Next</button>
             </div>
             
-            <!-- Content textarea is also included in the same form -->
             <div id='all-at-once-content' style="display: none;">
                 <label for="content">Content</label>
-                <textarea name="content" id="content" rows="16" placeholder="Enter the book contents here"></textarea>
-            
-            <button type="submit">Submit</button> 
-        </div>
+                <textarea name="content" id="content" rows="16" placeholder="Enter the book contents here" required></textarea>
+                <button type="submit">Submit</button> 
+            </div>
         </form>
     </section>
 </div>
