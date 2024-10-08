@@ -10,7 +10,11 @@ class User(db.Model, UserMixin):
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key = True)  # id will autoincrement
-    title = db.Column(db.String(100))
-    author = db.Column(db.String(100))
+    title = db.Column(db.String(100), nullable = False)
+    author = db.Column(db.String(100), nullable = False)
+    year = db.Column(db.Integer, nullable = False)
+    description = db.Column(db.String(1000), default = None)
+    content = db.Column(db.String(150000), default = None)
     avaliable = db.Column(db.Boolean, default = True)
     rating = db.Column(db.Integer, default = 5) # 5 = max score
+    

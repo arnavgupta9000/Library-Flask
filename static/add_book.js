@@ -9,14 +9,14 @@ page_btn.addEventListener("click", () => {
     page_btn.style.display = 'none';
     once.style.display = 'none';
 
-})
+});
 
 
 document.getElementById("next_button1").addEventListener("click", () => {
     document.getElementById('form1').style.display = 'none'; // hide the first form
     document.getElementById('form2').style.display = 'block'; // show the second form
     document.getElementById("form-display").style.display = 'block';
-})
+});
 
 
 let currentPage = 0;
@@ -49,7 +49,7 @@ setPagesButton.addEventListener("click", () => {
         nextPageButton.style.display = 'block'; // show the next page button
     }
 
-})
+});
 
 nextPageButton.addEventListener("click", () => {
     if (currentPage < pageInputsContainer.children.length) { // still have more things to load, each input = 1 page
@@ -64,7 +64,7 @@ nextPageButton.addEventListener("click", () => {
     } else {
         nextPageButton.style.display = 'none'; // hide the button we're done
     }
-})
+});
 
 once_btn.addEventListener("click", () => {
     once.style.display = "block";
@@ -72,4 +72,9 @@ once_btn.addEventListener("click", () => {
     once_btn.style.display = 'none';
     page.style.display = 'none';
 
-})
+});
+
+document.getElementById("next_button2").addEventListener("click", () => {
+    once.style.display="none";
+    document.getElementById("all-at-once-content").style.display='block';
+});
