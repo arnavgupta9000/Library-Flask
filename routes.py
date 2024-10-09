@@ -30,3 +30,22 @@ def add_books():
         return redirect(url_for('routes.add_books'))
 
     return render_template('add_book.html')
+
+@routes.route('/check_out', methods = ["GET", "POST"])
+def check_out():
+    if request.method=="POST":
+        book_id = request.form.get('book_id')
+        title = request.form.get('title')
+        author = request.form.get('author')
+        genre = request.form.get('genre')
+        year = request.form.get('year')
+        rating = request.form.get('rating')
+
+    return render_template('check_out.html', book={
+        'id': book_id,
+        'title': title,
+        'author': author,
+        'genre': genre,
+        'year': year,
+        'rating': rating,
+    })
