@@ -93,3 +93,9 @@ textarea {
 .error {
     border: 2px solid red; /* Optional: style for invalid fields */
 }
+
+.error-message {
+    margin-top: -1vh; /* Remove any default margins */
+    padding-bottom: 5px; /* Optional: Add a small space above the error message */
+    font-size: 14px; /* Optional: Adjust the font size */
+}

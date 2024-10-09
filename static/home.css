@@ -1,0 +1,78 @@
+/* Container for the book grid */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* each card is at least 200 pixels wide but can also fill the remaining space */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Individual book card */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Ensure text inside retains its styling */
+    text-align: center;
+    max-width: 250px;
+    height: 250px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer; /* Show a pointer cursor to indicate it's clickable */
+}
+
+
+
+/* Hover effect to make it interactive */
+.book-card:hover {
+    transform: scale(1.10);
+}
+
+/* Book image */
+/* Ensuring consistent height for the book image */
+.book-image {
+    width: 60px;
+    height: auto;
+    margin: 10px auto; /* Center the image */
+}
+
+/* Book details should fit inside the card */
+.book-details h3 {
+    font-size: 1.1em; /*110% font size of normal*/
+    white-space: nowrap; /* prevents the text from wrapping to a new line, itll stay on one line no matter what*/
+    overflow: hidden; /*hides any part of the card's text that goes beyond the limits*/
+    text-overflow: ellipsis;   /* if text is to long replace with ellpisis*/
+    margin: 5px 0;
+    color: #555;
+}
+
+/* On hover, show full title */
+.book-card:hover .book-details h3 {
+    white-space: normal; /* Allows wrapping */
+    overflow: visible; /* Show the full text */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional background to improve readability */
+    position: absolute; /* Allows the title to break out of the card's original height */
+    top: 0;
+    left: 0;
+    right: 0; /* these 3 0's mean that the code is ensured that the title is positioned at the top of the card, spanning its full width*/
+    padding: 10px;
+    z-index: 1; /*Ensures the title appears above other content when it is expanded*/
+}
+
+.book-details h3 {
+    font-size: 1.1em;
+}
+
+/* Text overflow settings for title, author, and description */
+.book-details h3, .book-details p {
+    margin: 5px 0;
+    color: #555;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Ensures overflow text is hidden */
+    text-overflow: ellipsis; /* Adds "..." for overflow */
+}

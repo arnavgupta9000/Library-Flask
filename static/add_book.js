@@ -75,6 +75,12 @@ once_btn.addEventListener("click", () => {
 });
 
 document.getElementById("next_button2").addEventListener("click", () => {
+        // clear previous error messages
+        let error_message = document.querySelectorAll(".error-message");
+        error_message.forEach(msg => { // forEach just goes through each node that we got from the querySelectorAll, this and the function() below do the same thing
+            msg.style.display = "none"; // just set the style to none
+        });
+    
     // check if all fields are filled
     let required_fields = document.querySelectorAll('#all-at-once-first-form [required]') // query selector get ALL  elements with matching query. returns a NODELIST
     // '#all-at-once-first-form ->This part of the selector targets the element with the ID all-at-once-first-form
@@ -89,18 +95,23 @@ document.getElementById("next_button2").addEventListener("click", () => {
     // The space after it indicates that you want to find elements inside (descendants of) this element that match the [required] attribute condition.
 
 
-
     let all_filled = true;
+
+
     required_fields.forEach(function(field) { // for each is just for each element, function(field) { ... } is an anonymous function (a function without a name) that is called for each element in the required_fields NodeList
         //Each element from the required_fields NodeList is passed to this function as the field parameter, which represents the current element being processed in the loop.
 
         // the 2 lines below also work instead of using the function but the function is cleaner and more convenient 
         // for (let i = 0; i < required_fields.length; i++) {
         //let field = required_fields[i]; // Accessing the element by index
+        let error_message = field.nextElementSibling; //nextElementSibling is a property of a DOM element in JavaScript that returns the next sibling element that is an Element node. It skips over any non-element nodes, such as text nodes or comments
 
         if (!field.value) {
+            
             all_filled = false;
             field.classList.add('error');
+            error_message.textContent = `Please fill out this field of ${field.name}.`; // field_name = name we give in that forum, can also do id instead
+            error_message.style.display = 'block'
         } else {
             field.classList.remove('error');
         } 

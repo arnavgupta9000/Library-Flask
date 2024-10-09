@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from models import Book # sql Table
 from __init__ import db
+from flask_login import current_user
 
 routes = Blueprint('routes', __name__)
 
 @routes.route('/')
 def home():
-    return render_template('home.html') # can also pass show_nav_bar = True, as an arg and it will work
+    books = Book.query.all()
+    return render_template('home.html', books= books) # can also pass show_nav_bar = True, as an arg and it will work
 
 @routes.route('/books')
 def books():
@@ -20,7 +22,7 @@ def add_books():
         genre = request.form['genre']
         year = request.form['year']
         description = request.form['description']
-        new_book = Book(title=title, author=author, genre=genre, year=year, description = description)
+        new_book = Book(title=title, author=author, genre=genre, year=year, description = description, user_id = current_user.id)
         db.session.add(new_book)
         db.session.commit()
 

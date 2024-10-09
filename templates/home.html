@@ -5,3 +5,31 @@
 
 {% set show_nav_bar = True %}  <!--set to True to show the nav bar (remember cant use the <!- comment to comment out this line ->)--> 
 
+{%block style%} <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}"> {%endblock%}
+
+{%block content%}
+    
+<div class="book-grid">
+    {% for book in books %}
+    <a href="/check_out?book_id={{ book.id }}" class="book-card">
+
+        <div class="book-card">
+            <div class="book-details">
+                <h3>{{ book.title }}</h3>
+            </div>
+
+            <img src="/static/images/book_icon.png" alt="Book Image" class="book-image">
+            <div class="book-details">
+                <p>Author: {{ book.author }}</p>
+                <p>Genre: {{ book.genre }}</p>
+                <p>Year: {{ book.year }}</p>
+                <p>Rating: {{book.rating}}</p>
+                <p>Added by: {{ book.user.email }}</p> <!-- Display user's email who added the book -->
+            </div>
+        </div>
+    </a>
+
+    {% endfor %}
+</div>
+
+{%endblock%}

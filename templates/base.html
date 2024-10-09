@@ -21,10 +21,11 @@
                  <!-- ^^ remember those hashtags are neccessary to comment out jinja code -->
                 <li><a href="{{ url_for('routes.home') }}">Home</a></li>
                 <li><a href="{{ url_for('routes.books') }}">Books</a></li>
-                <li><a href="{{ url_for('routes.add_books') }}">Add book</a></li>
                 {% if current_user.is_authenticated%} 
                     <!-- <li>Welcome, {#{ current_user.name }#}!</li> -->
+                    <li><a href="{{ url_for('routes.add_books') }}">Add book</a></li>
                     <li> <a href="{{url_for('auth.logout')}}">Logout</a></li>
+
                 {%else%}
                     <!-- <li>Not currently signed in</li> -->
                     <li><a href="{{ url_for('auth.login') }}">Login</a></li>
